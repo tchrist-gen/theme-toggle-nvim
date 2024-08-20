@@ -109,7 +109,9 @@ local function setup(args)
                 "theme-toggle-nvim: has_lualine:"
                     .. tostring(args.has_lualine)
                     .. " configured:"
-                    .. tostring(args.lualine_configured),
+                    .. tostring(args.lualine_configured)
+                    .. " luaconf: "
+                    .. tostring(args.lualine.get_config()),
                 vim.log.levels.INFO
             )
         end)
