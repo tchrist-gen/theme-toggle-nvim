@@ -108,7 +108,7 @@ local function setup(args)
                 vim.cmd.colorscheme(args.colorscheme.light)
                 if args.has_lualine and args.lualine_configured then
                     local config = args.lualine.get_config()
-                    config.theme = args.colorscheme.lualine.light
+                    config.options.theme = args.colorscheme.lualine.light
                     args.lualine.setup(config)
                 end
             end
@@ -117,7 +117,7 @@ local function setup(args)
                 vim.cmd.colorscheme(args.colorscheme.dark)
                 if args.has_lualine and args.lualine_configured then
                     local config = args.lualine.get_config()
-                    config.theme = args.colorscheme.lualine.dark
+                    config.options.theme = args.colorscheme.lualine.dark
                     args.lualine.setup(config)
                 end
             end
