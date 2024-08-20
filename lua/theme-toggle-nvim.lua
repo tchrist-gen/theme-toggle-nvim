@@ -1,6 +1,22 @@
 ---Check if the user provided config is as expected
 ---@param args table
 ---@return boolean
+
+local function dump(o)
+    if type(o) == "table" then
+        local s = "{ "
+        for k, v in pairs(o) do
+            if type(k) ~= "number" then
+                k = '"' .. k .. '"'
+            end
+            s = s .. "[" .. k .. "] = " .. dump(v) .. ","
+        end
+        return s .. "} "
+    else
+        return tostring(o)
+    end
+end
+
 local function handle_user_config(args)
     if args == nil then
         vim.notify("theme-toggle-nvim: Expected an argument in setup function", vim.log.levels.ERROR)
@@ -111,7 +127,7 @@ local function setup(args)
                     .. " configured:"
                     .. tostring(args.lualine_configured)
                     .. " luaconf: "
-                    .. tostring(args.lualine.get_config()),
+                    .. dump(args.lualine.get_config()),
                 vim.log.levels.INFO
             )
         end)
