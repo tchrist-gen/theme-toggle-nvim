@@ -106,7 +106,10 @@ local function setup(args)
                 end
             end
             vim.notify(
-                "theme-toggle-nvim: has_lualine:" .. args.has_lualine .. " configured:" .. args.lualine_configured,
+                "theme-toggle-nvim: has_lualine:"
+                    .. tostring(args.has_lualine)
+                    .. " configured:"
+                    .. tostring(args.lualine_configured),
                 vim.log.levels.INFO
             )
         end)
